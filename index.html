@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        var playerSelection;
+        var computerSelection;
+        var pScore = 0;
+        var cScore = 0;
+        var gameResult = ''; 
+
+        function getComputerChoice() {
+            const round = ['Rock', 'Paper', 'Scissors'];
+
+            return round[Math.floor(Math.random()*round.length)];
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            
+            computerSelection = getComputerChoice();
+            
+            playerSelection = prompt("Rock, Paper, or Scissors?");
+
+            // do {
+            //     playerSelection = prompt("Rock, Paper, or Scissors?");
+            //         playerSelection = playerSelection.toLowerCase();
+
+            //         console.log(playerSelection);
+
+            // } while (playerSelection != 'rock' || playerSelection != 'paper' || playerSelection != 'scissors');
+
+            let selection = `(Machine) ${computerSelection} VS. ${playerSelection} (You)`;
+
+            console.log(selection);
+
+
+
+            playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+
+            // while ((playerSelection != "Rock") || (playerSelection != "Paper") || (playerSelection !== "Scissors")) {
+            //     playerSelection = prompt("Rock, Paper, or Scissors?");
+            //     console.log(playerSelection)
+            // }
+            
+            
+            // if (playerSelection == 'Rock' && computerSelection == 'Paper') {
+            //     return "You Lose! Paper beat Rock";
+            // }
+
+
+            // playerSelection = playerSelection.toUpperCase();
+            // playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+            // computerSelection.charAt(0).toLowerCase();
+
+            // if (computerSelection == 'Rock') {
+            //     console.log("Computer Selection: " + computerSelection);
+            //     console.log("Your Selection: " + playerSelection);
+            //     pScore++;
+            //     cScore++;
+            //     return "tie!";
+            // } else if (computerSelection == 'Paper') {
+            //     console.log("Computer Selection: " + computerSelection);
+            //     console.log("Your Selection: " + playerSelection);
+            //     cScore++;
+            //     return "You Lose! Paper beats Rock";
+            // } else {
+            //     console.log("Computer Selection: " + computerSelection);
+            //     console.log("Your Selection: " + playerSelection);
+            //     pScore++;
+            //     return "You Win! Rock squashes Scissors";
+            // }
+
+            // if (computerSelection == playerSelection) {
+            //     pScore++;
+            //     cScore++;
+            //     return "Tie!";
+            // } else if (computerSelection =='Rock' && playerSelection != 'Paper') {
+            //     cScore++;
+            //     return "Computer Wins this Round.";
+            //     // else 
+            //     //     pScore++;
+            //     //     return "You WON this Round!"
+                
+            //   } 
+            //   else if (computerSelection =='Paper' && playerSelection != 'Scissors') {
+            //     cScore++;
+            //     return "Computer Wins this Round.";
+            // //   } else {
+            // //         pScore++;
+            // //         return "You WON this Round!"
+            //     }
+            //   else if (computerSelection =='Scissors' && playerSelection != 'Rock') {
+            //     cScore++;
+            //     return "Computer Wins this Round.";
+            //   } else {
+            //         pScore++;
+            //         return "You WONO this Round!"
+            //     }  
+
+            switch (computerSelection) {
+                case 'Rock':
+                    if (playerSelection == 'Rock') {
+                        pScore++;
+                        cScore++;
+                        return 'TIE!!!!';
+                    } else if (playerSelection == 'Paper') {
+                        pScore++;
+                        return 'You\'ve WON this 1Round';
+                    } else {
+                        cScore++;
+                        return 'Machine Wins this one.';
+                      }
+                    // break;
+                case 'Paper':
+                    if (playerSelection == 'Paper') {
+                        pScore++;
+                        cScore++;
+                        return 'TIE!!!!';
+                    } else if (playerSelection == 'Scissors') {
+                        pScore++;
+                        return 'You\'ve WON this 2Round';
+                    } else {
+                        cScore++;
+                        return 'Machine Wins this one.';
+                      }
+                    // break;
+                case 'Scissors':
+                    if (playerSelection == 'Scissors') {
+                        pScore++
+                        cScore++;
+                        return 'TIE!!!!';
+                    } else if (playerSelection == 'Rock') {
+                        pScore++;
+                        return 'You\'ve WON this 3Round';
+                    } else {
+                        cScore++;
+                        return 'Machine Wins this one.';
+                    }
+                    // break;
+                // default: 'DEFAULT WTH.';
+            }
+
+
+        }
+
+
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                console.log("ROUND " + (i + 1));
+                console.log(playRound(playerSelection, computerSelection));
+            }
+            let banner = `SCORE Board: Computer: ${cScore} User: ${pScore}`;
+            console.log(banner);
+
+            if (pScore > cScore) {
+                console.log("Congratulations!!! You Have Won the Game!");
+            } else {
+                console.log("You LOST the Game, Try Again.");
+            }
+        }
+
+        game();
+
+
+    </script>
+</body>
+</html>
